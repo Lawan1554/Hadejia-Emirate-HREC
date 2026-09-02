@@ -693,13 +693,39 @@ p.lead { font-size: clamp(1.05rem, 1.5vw, 1.2rem); color: rgba(255,255,255,0.9);
     });
   });
 
-  // Contact form (front-end only — connect to a backend endpoint for production use)
+  // Contact form — sends submissions to Google Sheets via Apps Script web app
+  const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzN2jtTvWtZfM2NPCsp4rPCj1hLGPsuAo7xQ_CjAXbkImVSt4H2pXxTgb65NAJUaOAr/exec';
   const form = document.getElementById('contactForm');
   const status = document.getElementById('formStatus');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    status.textContent = 'Message received. The office will respond within two working days.';
-    form.reset();
+    const submitBtn = form.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    status.textContent = 'Sending...';
+
+    const payload = {
+      name: document.getElementById('fname').value,
+      phone: document.getElementById('fphone').value,
+      reason: document.getElementById('freason').value,
+      message: document.getElementById('fmsg').value
+    };
+
+    fetch(SHEET_ENDPOINT, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify(payload)
+    })
+      .then(() => {
+        status.textContent = 'Message received. The office will respond within two working days.';
+        form.reset();
+      })
+      .catch(() => {
+        status.textContent = 'Something went wrong. Please try again or call the office directly.';
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+      });
   });
 </script>
 </body>
