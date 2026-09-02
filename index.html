@@ -595,33 +595,12 @@ p.lead { font-size: clamp(1.05rem, 1.5vw, 1.2rem); color: rgba(255,255,255,0.9);
         <div class="info-row"><div><strong>Email</strong><span>info@hadejiaequine.org</span></div></div>
         <div class="info-row"><div><strong>Hours</strong><span>Sunday – Thursday, 8am – 4pm</span></div></div>
       </div>
-      <form class="contact-form" id="contactForm">
-        <div class="contact-form-row">
-          <div>
-            <label for="fname">Full name</label>
-            <input id="fname" type="text" required />
-          </div>
-          <div>
-            <label for="fphone">Phone number</label>
-            <input id="fphone" type="tel" required />
-          </div>
-        </div>
-        <div>
-          <label for="freason">Reason for contact</label>
-          <select id="freason">
-            <option>Horse registration</option>
-            <option>Marketplace listing</option>
-            <option>Welfare report</option>
-            <option>General enquiry</option>
-          </select>
-        </div>
-        <div>
-          <label for="fmsg">Message</label>
-          <textarea id="fmsg" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary" style="justify-self:start;">Send message</button>
-        <p class="form-status" id="formStatus"></p>
-      </form>
+      <div class="contact-form" style="padding:0;overflow:hidden;">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc5cB1m8-lq4Jq9ITQH1gxKdaFD3exNM8pXGxFuzqAWlX6Udg/viewform?embedded=true"
+          width="100%" height="900" style="border:0;border-radius:20px;" title="Hadejia Equine Registration Contact Form">
+          Loading form...
+        </iframe>
+      </div>
     </div>
   </section>
 </main>
@@ -693,40 +672,7 @@ p.lead { font-size: clamp(1.05rem, 1.5vw, 1.2rem); color: rgba(255,255,255,0.9);
     });
   });
 
-  // Contact form — sends submissions to Google Sheets via Apps Script web app
-  const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzN2jtTvWtZfM2NPCsp4rPCj1hLGPsuAo7xQ_CjAXbkImVSt4H2pXxTgb65NAJUaOAr/exec';
-  const form = document.getElementById('contactForm');
-  const status = document.getElementById('formStatus');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const submitBtn = form.querySelector('button[type="submit"]');
-    submitBtn.disabled = true;
-    status.textContent = 'Sending...';
-
-    const payload = {
-      name: document.getElementById('fname').value,
-      phone: document.getElementById('fphone').value,
-      reason: document.getElementById('freason').value,
-      message: document.getElementById('fmsg').value
-    };
-
-    fetch(SHEET_ENDPOINT, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify(payload)
-    })
-      .then(() => {
-        status.textContent = 'Message received. The office will respond within two working days.';
-        form.reset();
-      })
-      .catch(() => {
-        status.textContent = 'Something went wrong. Please try again or call the office directly.';
-      })
-      .finally(() => {
-        submitBtn.disabled = false;
-      });
-  });
+  // Contact is now handled directly by the embedded Google Form above.
 </script>
 </body>
 </html>
