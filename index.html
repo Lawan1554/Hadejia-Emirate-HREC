@@ -170,6 +170,23 @@ p.lead { font-size: clamp(1rem, 1.5vw, 1.15rem); color: rgba(255,255,255,0.9); m
 .gallery-item { aspect-ratio: 1; border-radius: 16px; overflow: hidden; background-size: cover; background-position: center; box-shadow: var(--shadow); transition: var(--transition); }
 .gallery-item:hover { transform: scale(1.03); }
 
+.video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; }
+.video-card { background: var(--white); border-radius: 20px; overflow: hidden; border: 1px solid rgba(16,58,44,0.08); box-shadow: var(--shadow); transition: var(--transition); }
+.video-card:hover { transform: translateY(-5px); }
+.video-thumb { height: 190px; background-size: cover; background-position: center; position: relative; }
+.video-thumb::after { content: "▶"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; color: var(--white); background: rgba(11,46,34,0.35); }
+.video-card-body { padding: 1rem 1.1rem; }
+.video-card-body h3 { font-size: 1.02rem; margin-bottom: 0.2rem; }
+.video-card-body p { color: var(--muted); font-size: 0.88rem; }
+
+.news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; }
+.news-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; overflow: hidden; }
+.news-tagline { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 1.1rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.news-tagline span { font-size: 0.78rem; color: var(--gold-300); }
+.news-body { padding: 1.1rem; }
+.news-body h3 { font-size: 1.05rem; color: var(--white); margin-bottom: 0.4rem; }
+.news-body p { color: rgba(255,255,255,0.76); font-size: 0.9rem; }
+
 .contact-shell { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 2.2rem; }
 .contact-info-card { border-radius: var(--radius-lg); padding: 1.7rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); height: fit-content; }
 .contact-info-card .info-row { display: flex; gap: 0.9rem; padding: 0.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
@@ -192,13 +209,13 @@ p.lead { font-size: clamp(1rem, 1.5vw, 1.15rem); color: rgba(255,255,255,0.9); m
   .nav-desktop { display: none; }
   .menu-toggle { display: block; }
   .hero-grid, .grid-2, .reg-shell, .contact-shell { grid-template-columns: 1fr; }
-  .grid-3, .stats-grid, .eco-grid, .pillars, .market-grid, .tour-strip, .footer-grid, .event-grid { grid-template-columns: repeat(2, 1fr); }
+  .grid-3, .stats-grid, .eco-grid, .pillars, .market-grid, .tour-strip, .footer-grid, .event-grid, .video-grid, .news-grid { grid-template-columns: repeat(2, 1fr); }
   .gallery-grid { grid-template-columns: repeat(3, 1fr); }
   .visual-float { position: static; width: 100%; margin-top: 1rem; }
   .visual-stack { min-height: auto; }
 }
 @media (max-width: 620px) {
-  .grid-3, .stats-grid, .eco-grid, .pillars, .market-grid, .tour-strip, .footer-grid, .event-grid, .field-grid, .hero-panel-grid { grid-template-columns: 1fr; }
+  .grid-3, .stats-grid, .eco-grid, .pillars, .market-grid, .tour-strip, .footer-grid, .event-grid, .field-grid, .hero-panel-grid, .video-grid, .news-grid { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
   .search-shell input, .search-shell select { flex: 1 1 100%; }
   .brand-text strong { max-width: 42vw; font-size: 0.76rem; }
@@ -227,6 +244,8 @@ p.lead { font-size: clamp(1rem, 1.5vw, 1.15rem); color: rgba(255,255,255,0.9); m
         <li><a href="#heritage" data-i18n="nav.heritage">Heritage</a></li>
         <li><a href="#tourism" data-i18n="nav.tourism">Tourism</a></li>
         <li><a href="#gallery" data-i18n="nav.gallery">Gallery</a></li>
+        <li><a href="#videos" data-i18n="nav.videos">Videos</a></li>
+        <li><a href="#news" data-i18n="nav.news">News</a></li>
         <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
       </ul>
       <div class="lang-switch" id="langSwitch">
@@ -251,6 +270,8 @@ p.lead { font-size: clamp(1rem, 1.5vw, 1.15rem); color: rgba(255,255,255,0.9); m
       <li><a href="#heritage" data-i18n="nav.heritage">Heritage</a></li>
       <li><a href="#tourism" data-i18n="nav.tourism">Tourism</a></li>
       <li><a href="#gallery" data-i18n="nav.gallery">Gallery</a></li>
+      <li><a href="#videos" data-i18n="nav.videos">Videos</a></li>
+      <li><a href="#news" data-i18n="nav.news">News</a></li>
       <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
     </ul>
     <div class="mobile-tools">
@@ -490,6 +511,58 @@ p.lead { font-size: clamp(1rem, 1.5vw, 1.15rem); color: rgba(255,255,255,0.9); m
         <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?auto=format&fit=crop&w=401&q=80');"></div>
         <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=402&q=80');"></div>
         <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1508098682722-e99c643e7485?auto=format&fit=crop&w=402&q=80');"></div>
+        <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?auto=format&fit=crop&w=403&q=80');"></div>
+        <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=403&q=80');"></div>
+        <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1508098682722-e99c643e7485?auto=format&fit=crop&w=403&q=80');"></div>
+        <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?auto=format&fit=crop&w=404&q=80');"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-light" id="videos">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow" data-i18n="vid.eyebrow">Videos & Media</span>
+        <h2 data-i18n="vid.h">Watch the emirate in motion</h2>
+        <p data-i18n="vid.p">Highlights from durbar processions, race day finishes, and stories from horse owners across Hadejia.</p>
+      </div>
+      <div class="video-grid">
+        <div class="video-card">
+          <div class="video-thumb" style="background-image:url('https://images.unsplash.com/photo-1508098682722-e99c643e7485?auto=format&fit=crop&w=500&q=80');"></div>
+          <div class="video-card-body"><h3 data-i18n="vid.v1.h">Sallah Durbar Highlights 2026</h3><p data-i18n="vid.v1.p">Full procession footage from the Hadejia Central palace grounds.</p></div>
+        </div>
+        <div class="video-card">
+          <div class="video-thumb" style="background-image:url('https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=500&q=80');"></div>
+          <div class="video-card-body"><h3 data-i18n="vid.v2.h">Kafin Hausa District Cup Finish</h3><p data-i18n="vid.v2.p">Closing sprint from this year's district racing final.</p></div>
+        </div>
+        <div class="video-card">
+          <div class="video-thumb" style="background-image:url('https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?auto=format&fit=crop&w=500&q=80');"></div>
+          <div class="video-card-body"><h3 data-i18n="vid.v3.h">Meet a Registered Owner</h3><p data-i18n="vid.v3.p">A short story on why one family has bred horses for three generations.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark" id="news">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow" data-i18n="news.eyebrow">News & Announcements</span>
+        <h2 data-i18n="news.h">Latest from the emirate</h2>
+        <p data-i18n="news.p">Updates on registration, welfare policy, and upcoming events across Hadejia's districts.</p>
+      </div>
+      <div class="news-grid">
+        <div class="news-card">
+          <div class="news-tagline"><span data-i18n="news.n1.date">28 Aug 2026</span><span data-i18n="news.n1.tag">Registration</span></div>
+          <div class="news-body"><h3 data-i18n="news.n1.h">Registration now open for the 2027 durbar season</h3><p data-i18n="news.n1.p">Owners are encouraged to renew or register early to avoid last-minute delays.</p></div>
+        </div>
+        <div class="news-card">
+          <div class="news-tagline"><span data-i18n="news.n2.date">15 Aug 2026</span><span data-i18n="news.n2.tag">Welfare</span></div>
+          <div class="news-body"><h3 data-i18n="news.n2.h">Free vaccination drive across six districts</h3><p data-i18n="news.n2.p">Partner veterinary officers will visit district centres through September.</p></div>
+        </div>
+        <div class="news-card">
+          <div class="news-tagline"><span data-i18n="news.n3.date">02 Aug 2026</span><span data-i18n="news.n3.tag">Events</span></div>
+          <div class="news-body"><h3 data-i18n="news.n3.h">Kafin Hausa District Cup date confirmed</h3><p data-i18n="news.n3.p">The district racing fixture is set for 8 November 2026.</p></div>
+        </div>
       </div>
     </div>
   </section>
@@ -534,6 +607,8 @@ p.lead { font-size: clamp(1rem, 1.5vw, 1.15rem); color: rgba(255,255,255,0.9); m
           <li><a href="#heritage" data-i18n="nav.heritage">Heritage</a></li>
           <li><a href="#tourism" data-i18n="nav.tourism">Tourism</a></li>
           <li><a href="#gallery" data-i18n="nav.gallery">Gallery</a></li>
+          <li><a href="#videos" data-i18n="nav.videos">Videos</a></li>
+          <li><a href="#news" data-i18n="nav.news">News</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -559,7 +634,7 @@ const translations = {
     "brand.tag": "Kiyaye Al'ada • Ƙarfafa Al'umma",
     "nav.home": "Gida", "nav.about": "Game da mu", "nav.registration": "Rijistar Doki",
     "nav.welfare": "Kula da Lafiya", "nav.events": "Tsere-tsere", "nav.marketplace": "Kasuwa",
-    "nav.heritage": "Al'ada", "nav.tourism": "Yawon Buɗe Ido", "nav.gallery": "Hotuna", "nav.contact": "Tuntuɓe",
+    "nav.heritage": "Al'ada", "nav.tourism": "Yawon Buɗe Ido", "nav.gallery": "Hotuna", "nav.videos": "Bidiyo", "nav.news": "Labarai", "nav.contact": "Tuntuɓe",
     "nav.registerBtn": "Yi Rijistar Doki",
     "hero.kicker": "An kafa ƙarƙashin Majalisar Hadejia Emirate",
     "hero.title": "Hadejia Emirate Horse Racing And Equine Commerce",
@@ -622,6 +697,16 @@ const translations = {
     "tour.p1": "Jerin gwano na durbar na Sallah", "tour.p2": "Gasannin tsere na gunduma", "tour.p3": "Wuraren kiwo ta bakin kogin Hadejia",
     "gal.eyebrow": "Hotuna", "gal.h": "Lokutan da suka faru a Emirate",
     "gal.p": "Kallon dawaki, mahaya, da bukukuwan da ke tsara rayuwar yau da kullum a fadin gundumomin Hadejia.",
+    "vid.eyebrow": "Bidiyo & Kafofin Watsa Labarai", "vid.h": "Duba Emirate a wasa",
+    "vid.p": "Manyan wasannin daga jerin gwano na durbar, ƙarshen tsere, da labaran masu dawaki a fadin Hadejia.",
+    "vid.v1.h": "Manyan Ayyukan Durbar Sallah 2026", "vid.v1.p": "Cikakken jerin gwano daga filin fadar Hadejia Central.",
+    "vid.v2.h": "Ƙarshen Kofin Gundumar Kafin Hausa", "vid.v2.p": "Gudun ƙarshe daga gasar tsere ta gunduma na wannan shekara.",
+    "vid.v3.h": "Ku Sadu da Wani Mai Rijista", "vid.v3.p": "Ɗan gajeren labari kan dalilin da wata iyali ta ke kiwon dawaki cikin tsararraki uku.",
+    "news.eyebrow": "Labarai & Sanarwa", "news.h": "Sabbin labarai daga Emirate",
+    "news.p": "Sabuntawa kan rijista, manufofin kiwon lafiya, da tsare-tsaren da ke zuwa a fadin gundumomin Hadejia.",
+    "news.n1.date": "28 Aug 2026", "news.n1.tag": "Rijista", "news.n1.h": "An buɗe rijista don kakar durbar ta 2027", "news.n1.p": "Ana ƙarfafa masu dawaki su sabunta ko yin rijista tun da wuri don gujewa jinkiri.",
+    "news.n2.date": "15 Aug 2026", "news.n2.tag": "Kiwon Lafiya", "news.n2.h": "Rigakafi kyauta a fadin gundumomi shida", "news.n2.p": "Likitocin dabbobi za su ziyarci cibiyoyin gunduma har zuwa Satumba.",
+    "news.n3.date": "02 Aug 2026", "news.n3.tag": "Tsere-tsere", "news.n3.h": "An tabbatar da ranar Kofin Gundumar Kafin Hausa", "news.n3.p": "An shirya gasar tsere ta gunduma don 8 Nuwamba 2026.",
     "contact.h": "Tuntuɓe mu", "contact.p": "Don tallafin rijista, tambayoyin kasuwa, shiga tsere, ko kai rahoton kiwon lafiya.",
     "contact.office": "Ofis", "contact.officeval": "Sakatariyar Majalisar Hadejia Emirate, Jihar Jigawa",
     "contact.phone": "Waya", "contact.email": "Imel", "contact.hours": "Lokutan Aiki", "contact.hoursval": "Lahadi – Alhamis, 8am – 4pm",
