@@ -170,6 +170,29 @@ p.lead { font-size: clamp(1rem, 1.5vw, 1.15rem); color: rgba(255,255,255,0.9); m
 .gallery-item { aspect-ratio: 1; border-radius: 16px; overflow: hidden; background-size: cover; background-position: center; box-shadow: var(--shadow); transition: var(--transition); }
 .gallery-item:hover { transform: scale(1.03); }
 
+.ticket-shell { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; }
+.ticket-card { background: var(--white); border-radius: 20px; overflow: hidden; border: 1px solid rgba(16,58,44,0.08); box-shadow: var(--shadow); display: flex; flex-direction: column; }
+.ticket-head { background: linear-gradient(135deg, var(--green-900), var(--green-700)); color: var(--white); padding: 1.1rem 1.2rem; }
+.ticket-head span { font-size: 0.78rem; color: var(--gold-300); display: block; margin-bottom: 0.2rem; }
+.ticket-head h3 { color: var(--white); font-size: 1.05rem; margin: 0; }
+.ticket-body { padding: 1.1rem 1.2rem; flex: 1; display: flex; flex-direction: column; }
+.ticket-price { font-family: Georgia, serif; font-size: 1.5rem; color: var(--green-800); margin: 0.3rem 0 0.8rem; }
+.ticket-body ul { list-style: none; display: grid; gap: 0.5rem; margin-bottom: 1rem; flex: 1; }
+.ticket-body ul li { font-size: 0.88rem; color: var(--muted); display: flex; gap: 0.5rem; }
+.ticket-body ul li::before { content: "✓"; color: var(--gold-500); font-weight: 700; }
+
+.invest-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; }
+.invest-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 1.3rem; }
+.invest-card .card-icon { background: linear-gradient(135deg, rgba(200,164,77,0.2), rgba(255,255,255,0.06)); color: var(--gold-300); }
+.invest-card h3 { color: var(--white); }
+.invest-card p { color: rgba(255,255,255,0.76); font-size: 0.92rem; }
+
+.partner-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.partner-card { background: var(--white); border: 1px solid rgba(16,58,44,0.08); border-radius: 16px; padding: 1.3rem 1rem; text-align: center; box-shadow: var(--shadow); }
+.partner-card .mark { width: 46px; height: 46px; border-radius: 12px; margin: 0 auto 0.7rem; background: linear-gradient(135deg, rgba(200,164,77,0.16), rgba(16,58,44,0.08)); display: grid; place-items: center; font-size: 1.2rem; color: var(--green-700); }
+.partner-card strong { display: block; font-size: 0.92rem; }
+.partner-card span { display: block; color: var(--muted); font-size: 0.8rem; margin-top: 0.2rem; }
+
 .people-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.1rem; }
 .people-card { background: var(--white); border-radius: 20px; overflow: hidden; border: 1px solid rgba(16,58,44,0.08); box-shadow: var(--shadow); text-align: center; padding-bottom: 1.1rem; }
 .people-photo { height: 160px; background-size: cover; background-position: center; }
@@ -223,15 +246,15 @@ p.lead { font-size: clamp(1rem, 1.5vw, 1.15rem); color: rgba(255,255,255,0.9); m
   .nav-desktop { display: none; }
   .menu-toggle { display: block; }
   .hero-grid, .grid-2, .reg-shell, .contact-shell { grid-template-columns: 1fr; }
-  .grid-3, .stats-grid, .eco-grid, .pillars, .market-grid, .tour-strip, .footer-grid, .event-grid, .video-grid, .news-grid, .champ-grid { grid-template-columns: repeat(2, 1fr); }
-  .gallery-grid, .people-grid { grid-template-columns: repeat(3, 1fr); }
+  .grid-3, .stats-grid, .eco-grid, .pillars, .market-grid, .tour-strip, .footer-grid, .event-grid, .video-grid, .news-grid, .champ-grid, .ticket-shell, .invest-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid, .people-grid, .partner-grid { grid-template-columns: repeat(3, 1fr); }
   .visual-float { position: static; width: 100%; margin-top: 1rem; }
   .visual-stack { min-height: auto; }
 }
 @media (max-width: 620px) {
-  .grid-3, .stats-grid, .eco-grid, .pillars, .market-grid, .tour-strip, .footer-grid, .event-grid, .field-grid, .hero-panel-grid, .video-grid, .news-grid, .champ-grid { grid-template-columns: 1fr; }
+  .grid-3, .stats-grid, .eco-grid, .pillars, .market-grid, .tour-strip, .footer-grid, .event-grid, .field-grid, .hero-panel-grid, .video-grid, .news-grid, .champ-grid, .ticket-shell, .invest-grid { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-  .people-grid { grid-template-columns: repeat(2, 1fr); }
+  .people-grid, .partner-grid { grid-template-columns: repeat(2, 1fr); }
   .search-shell input, .search-shell select { flex: 1 1 100%; }
   .brand-text strong { max-width: 42vw; font-size: 0.76rem; }
 }
@@ -258,12 +281,15 @@ p.lead { font-size: clamp(1rem, 1.5vw, 1.15rem); color: rgba(255,255,255,0.9); m
         <li><a href="#events" data-i18n="nav.events">Race Events</a></li>
         <li><a href="#champions" data-i18n="nav.champions">Champions</a></li>
         <li><a href="#owners" data-i18n="nav.owners">Owners & Riders</a></li>
+        <li><a href="#tickets" data-i18n="nav.tickets">Tickets</a></li>
         <li><a href="#marketplace" data-i18n="nav.marketplace">Marketplace</a></li>
+        <li><a href="#business" data-i18n="nav.business">Business</a></li>
         <li><a href="#heritage" data-i18n="nav.heritage">Heritage</a></li>
         <li><a href="#tourism" data-i18n="nav.tourism">Tourism</a></li>
         <li><a href="#gallery" data-i18n="nav.gallery">Gallery</a></li>
         <li><a href="#videos" data-i18n="nav.videos">Videos</a></li>
         <li><a href="#news" data-i18n="nav.news">News</a></li>
+        <li><a href="#partners" data-i18n="nav.partners">Partners</a></li>
         <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
       </ul>
       <div class="lang-switch" id="langSwitch">
@@ -287,12 +313,15 @@ p.lead { font-size: clamp(1rem, 1.5vw, 1.15rem); color: rgba(255,255,255,0.9); m
       <li><a href="#events" data-i18n="nav.events">Race Events</a></li>
       <li><a href="#champions" data-i18n="nav.champions">Champions</a></li>
       <li><a href="#owners" data-i18n="nav.owners">Owners & Riders</a></li>
+      <li><a href="#tickets" data-i18n="nav.tickets">Tickets</a></li>
       <li><a href="#marketplace" data-i18n="nav.marketplace">Marketplace</a></li>
+      <li><a href="#business" data-i18n="nav.business">Business</a></li>
       <li><a href="#heritage" data-i18n="nav.heritage">Heritage</a></li>
       <li><a href="#tourism" data-i18n="nav.tourism">Tourism</a></li>
       <li><a href="#gallery" data-i18n="nav.gallery">Gallery</a></li>
       <li><a href="#videos" data-i18n="nav.videos">Videos</a></li>
       <li><a href="#news" data-i18n="nav.news">News</a></li>
+      <li><a href="#partners" data-i18n="nav.partners">Partners</a></li>
       <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
     </ul>
     <div class="mobile-tools">
@@ -504,6 +533,51 @@ p.lead { font-size: clamp(1rem, 1.5vw, 1.15rem); color: rgba(255,255,255,0.9); m
     </div>
   </section>
 
+  <section class="section section-dark" id="tickets">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow" data-i18n="tix.eyebrow">Tickets & Event Registration</span>
+        <h2 data-i18n="tix.h">Join the next race day</h2>
+        <p data-i18n="tix.p">Reserve entry for upcoming durbars and race meets — for spectators, riders, and district guests.</p>
+      </div>
+      <div class="ticket-shell">
+        <div class="ticket-card">
+          <div class="ticket-head"><span data-i18n="tix.t1.tag">Spectator</span><h3 data-i18n="tix.t1.h">General Entry</h3></div>
+          <div class="ticket-body">
+            <div class="ticket-price">₦1,000</div>
+            <ul>
+              <li data-i18n="tix.t1.f1">Access to open viewing grounds</li>
+              <li data-i18n="tix.t1.f2">Valid for one race day</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline" style="background:transparent;color:var(--white);border-color:rgba(255,255,255,0.3);" data-i18n="tix.reserve">Reserve entry</a>
+          </div>
+        </div>
+        <div class="ticket-card">
+          <div class="ticket-head"><span data-i18n="tix.t2.tag">Rider</span><h3 data-i18n="tix.t2.h">Race Entry</h3></div>
+          <div class="ticket-body">
+            <div class="ticket-price">₦5,000</div>
+            <ul>
+              <li data-i18n="tix.t2.f1">Requires a registered horse</li>
+              <li data-i18n="tix.t2.f2">Includes pre-race veterinary check</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline" style="background:transparent;color:var(--white);border-color:rgba(255,255,255,0.3);" data-i18n="tix.reserve">Reserve entry</a>
+          </div>
+        </div>
+        <div class="ticket-card">
+          <div class="ticket-head"><span data-i18n="tix.t3.tag">Guest</span><h3 data-i18n="tix.t3.h">District VIP</h3></div>
+          <div class="ticket-body">
+            <div class="ticket-price">₦10,000</div>
+            <ul>
+              <li data-i18n="tix.t3.f1">Reserved seating near the palace stand</li>
+              <li data-i18n="tix.t3.f2">Includes refreshments</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline" style="background:transparent;color:var(--white);border-color:rgba(255,255,255,0.3);" data-i18n="tix.reserve">Reserve entry</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section section-accent" id="marketplace">
     <div class="container">
       <div class="market-topbar">
@@ -529,6 +603,22 @@ p.lead { font-size: clamp(1rem, 1.5vw, 1.15rem); color: rgba(255,255,255,0.9); m
         </div>
       </div>
       <div class="market-footnote" data-i18n="market.footnote">Only registered horses can be listed. A verification badge means the horse's ownership and health record are confirmed on file.</div>
+    </div>
+  </section>
+
+  <section class="section section-light" id="business">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow" data-i18n="biz.eyebrow">Business & Investment</span>
+        <h2 data-i18n="biz.h">Opportunities in the equine economy</h2>
+        <p style="color:#5c5c5c;" data-i18n="biz.p">Hadejia's equine sector is growing beyond tradition into a working economy — open to investors, breeders, and service providers.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card"><div class="card-icon">🐎</div><h3 data-i18n="biz.i1.h">Breeding & Stables</h3><p data-i18n="biz.i1.p">Partner with registered breeders to expand stock quality and lineage records.</p></div>
+        <div class="card"><div class="card-icon">🛒</div><h3 data-i18n="biz.i2.h">Marketplace Vendors</h3><p data-i18n="biz.i2.p">Supply feed, tack, and veterinary products directly to registered owners.</p></div>
+        <div class="card"><div class="card-icon">🏇</div><h3 data-i18n="biz.i3.h">Event Sponsorship</h3><p data-i18n="biz.i3.p">Sponsor race meets and durbars for visibility across the emirate's districts.</p></div>
+      </div>
+      <div class="btn-group"><a href="#contact" class="btn btn-outline" data-i18n="biz.cta">Discuss an opportunity</a></div>
     </div>
   </section>
 
@@ -637,6 +727,23 @@ p.lead { font-size: clamp(1rem, 1.5vw, 1.15rem); color: rgba(255,255,255,0.9); m
     </div>
   </section>
 
+  <section class="section section-light" id="partners">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow" data-i18n="part.eyebrow">Partners & Sponsors</span>
+        <h2 data-i18n="part.h">Supported by the emirate and its partners</h2>
+        <p data-i18n="part.p">This platform is made possible through collaboration with the Emirate Council, district authorities, and private partners.</p>
+      </div>
+      <div class="partner-grid">
+        <div class="partner-card"><div class="mark">🏛️</div><strong data-i18n="part.p1.h">Hadejia Emirate Council</strong><span data-i18n="part.p1.s">Governing Partner</span></div>
+        <div class="partner-card"><div class="mark">🩺</div><strong data-i18n="part.p2.h">District Veterinary Services</strong><span data-i18n="part.p2.s">Welfare Partner</span></div>
+        <div class="partner-card"><div class="mark">🏦</div><strong data-i18n="part.p3.h">Jigawa Digital Innovation Initiative</strong><span data-i18n="part.p3.s">Technology Partner</span></div>
+        <div class="partner-card"><div class="mark">🤝</div><strong data-i18n="part.p4.h">Local District Sponsors</strong><span data-i18n="part.p4.s">Event Sponsors</span></div>
+      </div>
+      <div class="btn-group"><a href="#contact" class="btn btn-outline" data-i18n="part.cta">Become a partner</a></div>
+    </div>
+  </section>
+
   <section class="section section-dark" id="contact">
     <div class="container contact-shell">
       <div class="contact-info-card">
@@ -670,6 +777,8 @@ p.lead { font-size: clamp(1rem, 1.5vw, 1.15rem); color: rgba(255,255,255,0.9); m
           <li><a href="#events" data-i18n="nav.events">Race Events</a></li>
           <li><a href="#champions" data-i18n="nav.champions">Champions</a></li>
           <li><a href="#owners" data-i18n="nav.owners">Owners & Riders</a></li>
+          <li><a href="#tickets" data-i18n="nav.tickets">Tickets</a></li>
+          <li><a href="#business" data-i18n="nav.business">Business</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -681,6 +790,7 @@ p.lead { font-size: clamp(1rem, 1.5vw, 1.15rem); color: rgba(255,255,255,0.9); m
           <li><a href="#gallery" data-i18n="nav.gallery">Gallery</a></li>
           <li><a href="#videos" data-i18n="nav.videos">Videos</a></li>
           <li><a href="#news" data-i18n="nav.news">News</a></li>
+          <li><a href="#partners" data-i18n="nav.partners">Partners</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -705,8 +815,8 @@ const translations = {
     "brand.name": "Hadejia Emirate Horse Racing And Equine Commerce",
     "brand.tag": "Kiyaye Al'ada • Ƙarfafa Al'umma",
     "nav.home": "Gida", "nav.about": "Game da mu", "nav.statistics": "Ƙididdiga", "nav.registration": "Rijistar Doki",
-    "nav.welfare": "Kula da Lafiya", "nav.events": "Tsere-tsere", "nav.champions": "Zakarun", "nav.owners": "Masu Dawaki & Mahaya", "nav.marketplace": "Kasuwa",
-    "nav.heritage": "Al'ada", "nav.tourism": "Yawon Buɗe Ido", "nav.gallery": "Hotuna", "nav.videos": "Bidiyo", "nav.news": "Labarai", "nav.contact": "Tuntuɓe",
+    "nav.welfare": "Kula da Lafiya", "nav.events": "Tsere-tsere", "nav.champions": "Zakarun", "nav.owners": "Masu Dawaki & Mahaya", "nav.tickets": "Tikiti", "nav.marketplace": "Kasuwa", "nav.business": "Kasuwanci",
+    "nav.heritage": "Al'ada", "nav.tourism": "Yawon Buɗe Ido", "nav.gallery": "Hotuna", "nav.videos": "Bidiyo", "nav.news": "Labarai", "nav.partners": "Abokan Haɗin Gwiwa", "nav.contact": "Tuntuɓe",
     "nav.registerBtn": "Yi Rijistar Doki",
     "hero.kicker": "An kafa ƙarƙashin Majalisar Hadejia Emirate",
     "hero.title": "Hadejia Emirate Horse Racing And Equine Commerce",
@@ -729,6 +839,25 @@ const translations = {
     "eco.c2.tag": "Kasuwanci", "eco.c2.h": "Kasuwa", "eco.c2.p": "Saya da sayarwa da tabbataccen jeri, don masu saya su ga matsayin rijista kafin biya.",
     "eco.c3.tag": "Kiwon Lafiya", "eco.c3.h": "Lafiya & Kula", "eco.c3.p": "Samun likitocin dabbobi, tunatarwar allurar rigakafi, da rahoton kula da lafiya.",
     "eco.c4.tag": "Al'ada", "eco.c4.h": "Tsere & Yawon Buɗe Ido", "eco.c4.p": "Kalanda na durbar da tsere, da taga zuwa al'adun dawaki na Emirate ga baƙi.",
+    "tix.eyebrow": "Tikiti & Rijistar Taro", "tix.h": "Shiga ranar tsere ta gaba",
+    "tix.p": "Yi ajiyar shiga don durbar da gasannin tsere masu zuwa — don masu kallo, mahaya, da baƙin gunduma.",
+    "tix.t1.tag": "Mai Kallo", "tix.t1.h": "Shiga Gama Gari", "tix.t1.f1": "Damar kallo a filaye masu buɗe", "tix.t1.f2": "Ingantacce har rana ɗaya ta tsere",
+    "tix.t2.tag": "Mahayi", "tix.t2.h": "Shiga Tsere", "tix.t2.f1": "Ana buƙatar dokin da aka rijista", "tix.t2.f2": "Ya haɗa da duban likitan dabbobi kafin tsere",
+    "tix.t3.tag": "Baƙo", "tix.t3.h": "VIP na Gunduma", "tix.t3.f1": "Wurin zama da aka keɓe kusa da fadar sarauta", "tix.t3.f2": "Ya haɗa da abinci da abin sha",
+    "tix.reserve": "Yi Ajiyar Shiga",
+    "biz.eyebrow": "Kasuwanci & Zuba Jari", "biz.h": "Damar dama a tattalin arzikin dawaki",
+    "biz.p": "Sashin dawakin Hadejia yana girma fiye da al'ada zuwa tattalin arziki mai aiki — buɗe ga masu zuba jari, masu kiwo, da masu ba da sabis.",
+    "biz.i1.h": "Kiwo & Rumbuna", "biz.i1.p": "Yi haɗin gwiwa da masu kiwo da aka rijista don faɗaɗa ingancin dawaki da bayanan asali.",
+    "biz.i2.h": "Masu Sayarwa a Kasuwa", "biz.i2.p": "Samar da abinci, kayan doki, da kayayyakin likitan dabbobi kai tsaye ga masu dawaki da aka rijista.",
+    "biz.i3.h": "Ɗaukar Nauyin Taro", "biz.i3.p": "Ɗauki nauyin gasannin tsere da durbar don ganuwa a fadin gundumomin Emirate.",
+    "biz.cta": "Tattauna Dama",
+    "part.eyebrow": "Abokan Haɗin Gwiwa", "part.h": "Ana tallafawa da Emirate da abokan hulɗa",
+    "part.p": "Wannan dandali ya kasance mai yiwuwa ta hanyar haɗin gwiwa da Majalisar Emirate, hukumomin gunduma, da abokan hulɗa masu zaman kansu.",
+    "part.p1.h": "Majalisar Hadejia Emirate", "part.p1.s": "Babban Abokin Gudanarwa",
+    "part.p2.h": "Sabis na Likitan Dabbobi na Gunduma", "part.p2.s": "Abokin Kiwon Lafiya",
+    "part.p3.h": "Jigawa Digital Innovation Initiative", "part.p3.s": "Abokin Fasaha",
+    "part.p4.h": "Masu Ɗaukar Nauyi na Gunduma", "part.p4.s": "Masu Ɗaukar Nauyin Taro",
+    "part.cta": "Zama Abokin Hulɗa",
     "champ.eyebrow": "Zauren Zakarun", "champ.h": "Zakarun Emirate",
     "champ.p": "Mahaya da dawakan da suka ɗauki tutar Hadejia zuwa nasara a kakwannin baya-bayan nan.",
     "champ.c1.tag": "2026 · Kofin Gundumar Kafin Hausa", "champ.c1.p": "Mafi saurin lokacin gudu da aka taɓa rubutawa a tarihin gunduma.",
