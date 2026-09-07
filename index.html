@@ -170,6 +170,20 @@ p.lead { font-size: clamp(1rem, 1.5vw, 1.15rem); color: rgba(255,255,255,0.9); m
 .gallery-item { aspect-ratio: 1; border-radius: 16px; overflow: hidden; background-size: cover; background-position: center; box-shadow: var(--shadow); transition: var(--transition); }
 .gallery-item:hover { transform: scale(1.03); }
 
+.people-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.1rem; }
+.people-card { background: var(--white); border-radius: 20px; overflow: hidden; border: 1px solid rgba(16,58,44,0.08); box-shadow: var(--shadow); text-align: center; padding-bottom: 1.1rem; }
+.people-photo { height: 160px; background-size: cover; background-position: center; }
+.people-card h3 { font-size: 1rem; margin: 0.85rem 0 0.15rem; }
+.people-card span { display: block; color: var(--gold-500); font-size: 0.82rem; font-weight: 600; }
+.people-card p { color: var(--muted); font-size: 0.85rem; margin-top: 0.35rem; padding: 0 0.9rem; }
+
+.champ-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; }
+.champ-card { display: flex; gap: 1rem; align-items: center; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 1.1rem; }
+.champ-medal { flex-shrink: 0; width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, var(--gold-500), var(--gold-400)); display: grid; place-items: center; font-size: 1.4rem; }
+.champ-card h3 { color: var(--white); font-size: 1rem; margin-bottom: 0.15rem; }
+.champ-card span { color: var(--gold-300); font-size: 0.82rem; display: block; margin-bottom: 0.25rem; }
+.champ-card p { color: rgba(255,255,255,0.72); font-size: 0.85rem; }
+
 .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; }
 .video-card { background: var(--white); border-radius: 20px; overflow: hidden; border: 1px solid rgba(16,58,44,0.08); box-shadow: var(--shadow); transition: var(--transition); }
 .video-card:hover { transform: translateY(-5px); }
@@ -209,14 +223,15 @@ p.lead { font-size: clamp(1rem, 1.5vw, 1.15rem); color: rgba(255,255,255,0.9); m
   .nav-desktop { display: none; }
   .menu-toggle { display: block; }
   .hero-grid, .grid-2, .reg-shell, .contact-shell { grid-template-columns: 1fr; }
-  .grid-3, .stats-grid, .eco-grid, .pillars, .market-grid, .tour-strip, .footer-grid, .event-grid, .video-grid, .news-grid { grid-template-columns: repeat(2, 1fr); }
-  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+  .grid-3, .stats-grid, .eco-grid, .pillars, .market-grid, .tour-strip, .footer-grid, .event-grid, .video-grid, .news-grid, .champ-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid, .people-grid { grid-template-columns: repeat(3, 1fr); }
   .visual-float { position: static; width: 100%; margin-top: 1rem; }
   .visual-stack { min-height: auto; }
 }
 @media (max-width: 620px) {
-  .grid-3, .stats-grid, .eco-grid, .pillars, .market-grid, .tour-strip, .footer-grid, .event-grid, .field-grid, .hero-panel-grid, .video-grid, .news-grid { grid-template-columns: 1fr; }
+  .grid-3, .stats-grid, .eco-grid, .pillars, .market-grid, .tour-strip, .footer-grid, .event-grid, .field-grid, .hero-panel-grid, .video-grid, .news-grid, .champ-grid { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .people-grid { grid-template-columns: repeat(2, 1fr); }
   .search-shell input, .search-shell select { flex: 1 1 100%; }
   .brand-text strong { max-width: 42vw; font-size: 0.76rem; }
 }
@@ -237,9 +252,12 @@ p.lead { font-size: clamp(1rem, 1.5vw, 1.15rem); color: rgba(255,255,255,0.9); m
       <ul class="nav-links">
         <li><a href="#top" data-i18n="nav.home">Home</a></li>
         <li><a href="#about" data-i18n="nav.about">About</a></li>
+        <li><a href="#statistics" data-i18n="nav.statistics">Statistics</a></li>
         <li><a href="#registration" data-i18n="nav.registration">Horse Registration</a></li>
         <li><a href="#welfare" data-i18n="nav.welfare">Horse Welfare</a></li>
         <li><a href="#events" data-i18n="nav.events">Race Events</a></li>
+        <li><a href="#champions" data-i18n="nav.champions">Champions</a></li>
+        <li><a href="#owners" data-i18n="nav.owners">Owners & Riders</a></li>
         <li><a href="#marketplace" data-i18n="nav.marketplace">Marketplace</a></li>
         <li><a href="#heritage" data-i18n="nav.heritage">Heritage</a></li>
         <li><a href="#tourism" data-i18n="nav.tourism">Tourism</a></li>
@@ -263,9 +281,12 @@ p.lead { font-size: clamp(1rem, 1.5vw, 1.15rem); color: rgba(255,255,255,0.9); m
     <ul class="mobile-nav-links">
       <li><a href="#top" data-i18n="nav.home">Home</a></li>
       <li><a href="#about" data-i18n="nav.about">About</a></li>
+      <li><a href="#statistics" data-i18n="nav.statistics">Statistics</a></li>
       <li><a href="#registration" data-i18n="nav.registration">Horse Registration</a></li>
       <li><a href="#welfare" data-i18n="nav.welfare">Horse Welfare</a></li>
       <li><a href="#events" data-i18n="nav.events">Race Events</a></li>
+      <li><a href="#champions" data-i18n="nav.champions">Champions</a></li>
+      <li><a href="#owners" data-i18n="nav.owners">Owners & Riders</a></li>
       <li><a href="#marketplace" data-i18n="nav.marketplace">Marketplace</a></li>
       <li><a href="#heritage" data-i18n="nav.heritage">Heritage</a></li>
       <li><a href="#tourism" data-i18n="nav.tourism">Tourism</a></li>
@@ -312,12 +333,18 @@ p.lead { font-size: clamp(1rem, 1.5vw, 1.15rem); color: rgba(255,255,255,0.9); m
     </div>
   </section>
 
-  <section class="section section-light" style="padding-top:56px;padding-bottom:56px;">
-    <div class="container stats-grid">
-      <div class="stat-card"><strong>1,240+</strong><span data-i18n="stats.horses">Registered Horses</span></div>
-      <div class="stat-card"><strong>860+</strong><span data-i18n="stats.owners">Horse Owners</span></div>
-      <div class="stat-card"><strong>24</strong><span data-i18n="stats.events">Race Events</span></div>
-      <div class="stat-card"><strong>310+</strong><span data-i18n="stats.listings">Marketplace Listings</span></div>
+  <section class="section section-light" id="statistics" style="padding-top:56px;padding-bottom:56px;">
+    <div class="container">
+      <div class="section-intro" style="margin-bottom:1.8rem;">
+        <span class="eyebrow" data-i18n="stats.eyebrow">Equine Statistics & Records</span>
+        <h2 style="font-size:clamp(1.5rem,3vw,2.2rem);" data-i18n="stats.h">The emirate, in numbers</h2>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card"><strong>1,240+</strong><span data-i18n="stats.horses">Registered Horses</span></div>
+        <div class="stat-card"><strong>860+</strong><span data-i18n="stats.owners">Horse Owners</span></div>
+        <div class="stat-card"><strong>24</strong><span data-i18n="stats.events">Race Events</span></div>
+        <div class="stat-card"><strong>310+</strong><span data-i18n="stats.listings">Marketplace Listings</span></div>
+      </div>
     </div>
   </section>
 
@@ -429,6 +456,49 @@ p.lead { font-size: clamp(1rem, 1.5vw, 1.15rem); color: rgba(255,255,255,0.9); m
         <div class="event-card">
           <div class="event-date"><strong data-i18n="events.e3.date">20 Dec 2026</strong><span data-i18n="events.e3.tag">Racing</span></div>
           <div class="event-body"><h3 data-i18n="events.e3.h">Emirate Endurance Trial</h3><p data-i18n="events.e3.p">Long-distance endurance race along the Hadejia river route.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark" id="champions">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow" data-i18n="champ.eyebrow">Hall of Fame</span>
+        <h2 data-i18n="champ.h">Champions of the emirate</h2>
+        <p data-i18n="champ.p">Riders and horses who have carried Hadejia's colours to victory in recent seasons.</p>
+      </div>
+      <div class="champ-grid">
+        <div class="champ-card"><div class="champ-medal">🏆</div><div><h3>Dagi & Musa Ibrahim</h3><span data-i18n="champ.c1.tag">2026 · Kafin Hausa District Cup</span><p data-i18n="champ.c1.p">Fastest sprint time recorded in district history.</p></div></div>
+        <div class="champ-card"><div class="champ-medal">🥈</div><div><h3>Sarauniya & Amina Bello</h3><span data-i18n="champ.c2.tag">2026 · Emirate Endurance Trial</span><p data-i18n="champ.c2.p">Second place finish over the full river route.</p></div></div>
+        <div class="champ-card"><div class="champ-medal">🥉</div><div><h3>Barka & Sani Yusuf</h3><span data-i18n="champ.c3.tag">2025 · Hadejia Central Meet</span><p data-i18n="champ.c3.p">Third place, first year of competitive entry.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-light" id="owners">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow" data-i18n="own.eyebrow">Horse Owners & Riders</span>
+        <h2 data-i18n="own.h">The people behind the horses</h2>
+        <p data-i18n="own.p">A glimpse at some of the registered owners and riders who keep the emirate's equestrian life moving.</p>
+      </div>
+      <div class="people-grid">
+        <div class="people-card">
+          <div class="people-photo" style="background-image:url('https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?auto=format&fit=crop&w=300&q=80');"></div>
+          <h3>Musa Ibrahim</h3><span data-i18n="own.p1.role">Rider, Kafin Hausa</span><p data-i18n="own.p1.p">Racing since 2019, three district titles.</p>
+        </div>
+        <div class="people-card">
+          <div class="people-photo" style="background-image:url('https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=300&q=80');"></div>
+          <h3>Amina Bello</h3><span data-i18n="own.p2.role">Owner & Breeder, Auyo</span><p data-i18n="own.p2.p">Manages a family stable of eleven registered horses.</p>
+        </div>
+        <div class="people-card">
+          <div class="people-photo" style="background-image:url('https://images.unsplash.com/photo-1508098682722-e99c643e7485?auto=format&fit=crop&w=300&q=80');"></div>
+          <h3>Sani Yusuf</h3><span data-i18n="own.p3.role">Rider, Hadejia Central</span><p data-i18n="own.p3.p">Newest entrant to the district racing circuit.</p>
+        </div>
+        <div class="people-card">
+          <div class="people-photo" style="background-image:url('https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?auto=format&fit=crop&w=301&q=80');"></div>
+          <h3>Hauwa Garba</h3><span data-i18n="own.p4.role">Owner, Kirikasama</span><p data-i18n="own.p4.p">Registered her first horse through this platform in 2026.</p>
         </div>
       </div>
     </div>
@@ -598,6 +668,8 @@ p.lead { font-size: clamp(1rem, 1.5vw, 1.15rem); color: rgba(255,255,255,0.9); m
           <li><a href="#marketplace" data-i18n="nav.marketplace">Marketplace</a></li>
           <li><a href="#welfare" data-i18n="nav.welfare">Horse Welfare</a></li>
           <li><a href="#events" data-i18n="nav.events">Race Events</a></li>
+          <li><a href="#champions" data-i18n="nav.champions">Champions</a></li>
+          <li><a href="#owners" data-i18n="nav.owners">Owners & Riders</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -632,8 +704,8 @@ const translations = {
   ha: {
     "brand.name": "Hadejia Emirate Horse Racing And Equine Commerce",
     "brand.tag": "Kiyaye Al'ada • Ƙarfafa Al'umma",
-    "nav.home": "Gida", "nav.about": "Game da mu", "nav.registration": "Rijistar Doki",
-    "nav.welfare": "Kula da Lafiya", "nav.events": "Tsere-tsere", "nav.marketplace": "Kasuwa",
+    "nav.home": "Gida", "nav.about": "Game da mu", "nav.statistics": "Ƙididdiga", "nav.registration": "Rijistar Doki",
+    "nav.welfare": "Kula da Lafiya", "nav.events": "Tsere-tsere", "nav.champions": "Zakarun", "nav.owners": "Masu Dawaki & Mahaya", "nav.marketplace": "Kasuwa",
     "nav.heritage": "Al'ada", "nav.tourism": "Yawon Buɗe Ido", "nav.gallery": "Hotuna", "nav.videos": "Bidiyo", "nav.news": "Labarai", "nav.contact": "Tuntuɓe",
     "nav.registerBtn": "Yi Rijistar Doki",
     "hero.kicker": "An kafa ƙarƙashin Majalisar Hadejia Emirate",
@@ -643,6 +715,7 @@ const translations = {
     "hero.cta1": "Yi Rijistar Doki", "hero.cta2": "Duba Kasuwa",
     "hero.stat1": "Dawakai da aka rijista a fadin Emirate", "hero.stat2": "Gundumomi da aka haɗa",
     "hero.mini.h": "Lokacin Durbar ya buɗe", "hero.mini.p": "Mahayan da ke shirye don jerin gwanon Emirate za su iya tabbatar da matsayin rijistarsu a nan kafin fareti.",
+    "stats.eyebrow": "Ƙididdiga & Bayanan Doki", "stats.h": "Emirate, cikin lambobi",
     "stats.horses": "Dawakai da Aka Rijista", "stats.owners": "Masu Dawaki", "stats.events": "Tsere-tsere", "stats.listings": "Jerin Kasuwa",
     "about.eyebrow": "Game da aikin", "about.h": "An gina shi bisa al'ada mafi tsufa da kowace rijista",
     "about.p": "Cikin ƙarni, doki ya kasance tsakiyar asalin Hadejia — a durbar na Emirate, gidajen manoma, da al'adun tsere da aka miƙa daga tsara zuwa tsara. Hadejia Emirate Horse Racing And Equine Commerce yana kawo wa wannan al'ada gida na gudanarwa: wuri guda don rijistar mallaka, ciniki cikin nauyi, bin tsere-tsere, da samun tallafin kiwon lafiya.",
@@ -656,6 +729,17 @@ const translations = {
     "eco.c2.tag": "Kasuwanci", "eco.c2.h": "Kasuwa", "eco.c2.p": "Saya da sayarwa da tabbataccen jeri, don masu saya su ga matsayin rijista kafin biya.",
     "eco.c3.tag": "Kiwon Lafiya", "eco.c3.h": "Lafiya & Kula", "eco.c3.p": "Samun likitocin dabbobi, tunatarwar allurar rigakafi, da rahoton kula da lafiya.",
     "eco.c4.tag": "Al'ada", "eco.c4.h": "Tsere & Yawon Buɗe Ido", "eco.c4.p": "Kalanda na durbar da tsere, da taga zuwa al'adun dawaki na Emirate ga baƙi.",
+    "champ.eyebrow": "Zauren Zakarun", "champ.h": "Zakarun Emirate",
+    "champ.p": "Mahaya da dawakan da suka ɗauki tutar Hadejia zuwa nasara a kakwannin baya-bayan nan.",
+    "champ.c1.tag": "2026 · Kofin Gundumar Kafin Hausa", "champ.c1.p": "Mafi saurin lokacin gudu da aka taɓa rubutawa a tarihin gunduma.",
+    "champ.c2.tag": "2026 · Gasar Jimiri ta Emirate", "champ.c2.p": "Matsayi na biyu a cikakkiyar hanyar kogin.",
+    "champ.c3.tag": "2025 · Gasar Hadejia Central", "champ.c3.p": "Matsayi na uku, shekara ta farko ta shiga gasa.",
+    "own.eyebrow": "Masu Dawaki & Mahaya", "own.h": "Mutanen da ke bayan dawakan",
+    "own.p": "Ɗan kallo kan wasu daga cikin masu dawaki da mahaya da aka rijista waɗanda ke ci gaba da rayuwar dawaki ta Emirate.",
+    "own.p1.role": "Mahayi, Kafin Hausa", "own.p1.p": "Yana tsere tun 2019, ya samu kofuna uku na gunduma.",
+    "own.p2.role": "Mai Doki & Mai Kiwo, Auyo", "own.p2.p": "Tana kula da rumbun iyali mai dawaki goma sha ɗaya da aka rijista.",
+    "own.p3.role": "Mahayi, Hadejia Central", "own.p3.p": "Sabon shiga cikin gasar tsere ta gunduma.",
+    "own.p4.role": "Mai Doki, Kirikasama", "own.p4.p": "Ta yi rijistar dokinta na farko ta wannan dandali a 2026.",
     "reg.eyebrow": "Rijista", "reg.h": "Yi rijistar doki cikin matakai huɗu",
     "reg.p": "Rijista kyauta ce ga mazauna Emirate kuma tana ƙirƙirar bayanan da ake amfani da su a kasuwa, shigar tsere, da sabis na kiwon lafiya.",
     "reg.s1.h": "Miƙa bayanan mai shi da doki", "reg.s1.p": "Suna, gunduma, da bayanin doki, ciki har da duk wani asali da aka sani.",
