@@ -767,6 +767,7 @@ p.lead { font-size: clamp(1rem, 1.5vw, 1.15rem); color: rgba(255,255,255,0.9); m
         <p style="color:rgba(255,255,255,0.75);margin-bottom:1rem;" data-i18n="contact.p">For registration support, marketplace questions, race entries, or welfare reports.</p>
         <div class="info-row"><div><strong data-i18n="contact.office">Office</strong><span data-i18n="contact.officeval">Hadejia Emirate Council Secretariat, Jigawa State</span></div></div>
         <div class="info-row"><div><strong data-i18n="contact.phone">Phone</strong><span>+234 800 000 0000</span></div></div>
+        <div class="info-row"><div><strong data-i18n="contact.whatsapp">WhatsApp</strong><span><a href="https://wa.me/2348066491969" target="_blank" rel="noopener" style="color:#25D366;font-weight:700;">💬 +234 806 649 1969</a></span></div></div>
         <div class="info-row"><div><strong data-i18n="contact.email">Email</strong><span>info@hadejiaequine.org</span></div></div>
         <div class="info-row"><div><strong data-i18n="contact.hours">Hours</strong><span data-i18n="contact.hoursval">Sunday – Thursday, 8am – 4pm</span></div></div>
       </div>
@@ -938,7 +939,7 @@ const translations = {
     "news.n3.date": "02 Aug 2026", "news.n3.tag": "Tsere-tsere", "news.n3.h": "An tabbatar da ranar Kofin Gundumar Kafin Hausa", "news.n3.p": "An shirya gasar tsere ta gunduma don 8 Nuwamba 2026.",
     "contact.h": "Tuntuɓe mu", "contact.p": "Don tallafin rijista, tambayoyin kasuwa, shiga tsere, ko kai rahoton kiwon lafiya.",
     "contact.office": "Ofis", "contact.officeval": "Sakatariyar Majalisar Hadejia Emirate, Jihar Jigawa",
-    "contact.phone": "Waya", "contact.email": "Imel", "contact.hours": "Lokutan Aiki", "contact.hoursval": "Lahadi – Alhamis, 8am – 4pm",
+    "contact.phone": "Waya", "contact.whatsapp": "WhatsApp", "contact.email": "Imel", "contact.hours": "Lokutan Aiki", "contact.hoursval": "Lahadi – Alhamis, 8am – 4pm",
     "footer.p": "Hadejia Emirate Horse Racing And Equine Commerce babban aiki ne na Majalisar Hadejia Emirate, wanda ke haɗa masu dawaki, 'yan kasuwa, da mahaya a fadin gundumomin Emirate.",
     "footer.c1.h": "Dandali", "footer.c2.h": "Emirate", "footer.c3.h": "Tallafi",
     "footer.report": "Kai Rahoton Damuwa", "footer.offices": "Ofisoshin Gunduma",
@@ -987,6 +988,9 @@ mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => 
   menuToggle.setAttribute('aria-expanded', false);
   menuToggle.textContent = '☰';
 }));
-</script>
+</script><a href="https://wa.me/2348066491969" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"
+   style="position:fixed;bottom:22px;right:22px;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(0,0,0,0.3);z-index:1200;font-size:1.8rem;">
+  <svg width="30" height="30" viewBox="0 0 32 32" fill="white"><path d="M16.001 3C9.373 3 4 8.373 4 15.001c0 2.386.7 4.61 1.912 6.478L4 29l7.72-1.876A11.94 11.94 0 0016.001 27C22.629 27 28 21.629 28 15.001 28 8.373 22.629 3 16.001 3zm0 21.818a9.77 9.77 0 01-4.98-1.362l-.357-.212-4.583 1.113 1.13-4.47-.232-.367A9.77 9.77 0 016.182 15c0-5.421 4.398-9.818 9.818-9.818S25.818 9.58 25.818 15 21.42 24.818 16 24.818zm5.39-7.36c-.296-.148-1.75-.864-2.022-.963-.271-.099-.469-.148-.667.148-.198.297-.766.964-.94 1.162-.173.198-.346.223-.642.075-.296-.148-1.25-.46-2.38-1.468-.88-.785-1.474-1.755-1.647-2.052-.173-.297-.019-.457.13-.605.133-.132.296-.346.444-.519.148-.173.198-.297.297-.494.099-.198.05-.371-.025-.519-.075-.148-.667-1.606-.914-2.2-.24-.578-.485-.5-.667-.51h-.568c-.198 0-.519.075-.79.371-.271.297-1.038 1.014-1.038 2.472 0 1.458 1.063 2.867 1.211 3.065.148.198 2.093 3.196 5.072 4.482.709.306 1.262.489 1.693.626.711.226 1.358.194 1.87.118.57-.085 1.75-.716 1.997-1.407.247-.692.247-1.284.173-1.408-.074-.123-.271-.198-.567-.346z"/></svg>
+</a>
 </body>
 </html>
